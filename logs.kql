@@ -1,0 +1,5 @@
+SigninLogs
+| where TimeGenerated > ago(1d)
+| where Location != "Turkey"
+| summarize Attempts=count() by UserPrincipalName, Location
+| where Attempts > 3
